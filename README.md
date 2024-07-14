@@ -7,5 +7,5 @@
 - **End at (Continuously updating)**:pig:
 
 
-> **Thanks a lot for Professor DeNero and Professor Farid and all the TAs😄**
+- **Thanks a lot for Professor DeNero and Professor Farid and all the TAs😄**
 
