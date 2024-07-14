@@ -1,4 +1,4 @@
-#### <font color = red>My all solution for CS61A_Fall2020⭐
+#### <font color = red>My all solutions for CS61A_Fall2020⭐
 
 ---
 
