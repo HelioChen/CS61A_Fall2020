@@ -87,7 +87,9 @@ def composite_identity(f, g):
     False
     """
     "*** YOUR CODE HERE ***"
-
+    def function(x):
+        return f(g(x)) == g(f(x))
+    return function 
 
 
 def cycle(f1, f2, f3):
@@ -117,16 +119,5 @@ def cycle(f1, f2, f3):
     19
     """
     "*** YOUR CODE HERE ***"
-
-b = lambda x: lambda: x  # Lambdas can return other lambdas!
-c = b(88)
-print(c)
-
-x = None 
-x 
-print(lambda x : x)
-
-print_lambda = lambda z: print(z)
-one_thousand = print_lambda(1000)
 
 
