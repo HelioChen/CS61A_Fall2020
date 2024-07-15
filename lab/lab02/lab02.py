@@ -47,13 +47,13 @@ def count_cond(condition):
     8
     """
     "*** YOUR CODE HERE ***"
-    
-    
-
-    
-
-
-
+    def Count(n):
+        cnt, i = 0, 1
+        while i < n:
+            if condition(n, i):
+                cnt += 1
+        return cnt 
+    return Count
 
 def compose1(f, g):
     """Return the composition function which given x, computes f(g(x)).
