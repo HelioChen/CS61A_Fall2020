@@ -23,6 +23,12 @@ def num_eights(x):
     True
     """
     "*** YOUR CODE HERE ***"
+    cnt = 0
+    while x != 0:
+        if x % 10 == 8:
+            cnt += 1
+        x //= 10
+    return cnt 
 
 
 def pingpong(n):
@@ -140,3 +146,6 @@ def make_anonymous_factorial():
     """
     return 'YOUR_EXPRESSION_HERE'
 
+
+print(num_eights(88888888))
+print(num_eights(8))
