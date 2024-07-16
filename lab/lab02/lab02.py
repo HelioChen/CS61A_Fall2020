@@ -119,5 +119,22 @@ def cycle(f1, f2, f3):
     19
     """
     "*** YOUR CODE HERE ***"
+    def my_cycle(n):
+        def function2(x):
+            k = n 
+            while k != 0:
+                if (n - k) % 3 == 0:
+                    x = f1(x)
+                elif (n - k) % 3 == 1:
+                    x = f2(x)
+                elif (n - k) % 3 == 2:
+                    x = f3(x)
+                k -= 1
+            return x 
+        return function2      
+    return my_cycle 
+
+
+        
 
 
