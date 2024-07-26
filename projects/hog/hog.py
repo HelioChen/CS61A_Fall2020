@@ -23,7 +23,15 @@ def roll_dice(num_rolls, dice=six_sided):
     # BEGIN PROBLEM 1
     "*** YOUR CODE HERE ***"
     # END PROBLEM 1
-
+    sum = 0 
+    while num_rolls != 0:
+        roll = dice()
+        if roll != 1 and sum != 1:
+            sum += roll 
+        else:
+            sum = 1
+        num_rolls -= 1
+    return sum 
 
 def boar_brawl(player_score, opponent_score):
     """Return the points scored by rolling 0 dice according to Boar Brawl.
@@ -34,6 +42,11 @@ def boar_brawl(player_score, opponent_score):
     """
     # BEGIN PROBLEM 2
     "*** YOUR CODE HERE ***"
+    sum = 0
+    sum1 = player_score % 10 
+    sum2 = opponent_score // 10 % 10 
+    sum = max(1, 3 * abs(sum1 - sum2))
+    return sum 
     # END PROBLEM 2
 
 
@@ -52,6 +65,12 @@ def take_turn(num_rolls, player_score, opponent_score, dice=six_sided):
     assert num_rolls <= 10, 'Cannot roll more than 10 dice.'
     # BEGIN PROBLEM 3
     "*** YOUR CODE HERE ***"
+    sum = 0
+    if num_rolls == 0:
+        sum = boar_brawl(player_score, opponent_score)
+        return sum 
+    sum = roll_dice(num_rolls, dice)
+    return sum 
     # END PROBLEM 3
 
 
@@ -77,12 +96,21 @@ def num_factors(n):
     """Return the number of factors of N, including 1 and N itself."""
     # BEGIN PROBLEM 4
     "*** YOUR CODE HERE ***"
+    cnt = 0
+    for i in range(1, n + 1):
+        if n % i == 0:
+            cnt += 1
+    return cnt 
     # END PROBLEM 4
 
 def sus_points(score):
     """Return the new score of a player taking into account the Sus Fuss rule."""
     # BEGIN PROBLEM 4
     "*** YOUR CODE HERE ***"
+    if num_factors(score) == 3 or num_factors(score) == 4:
+        while not is_prime(score):
+            score += 1
+    return score
     # END PROBLEM 4
 
 def sus_update(num_rolls, player_score, opponent_score, dice=six_sided):
@@ -91,6 +119,7 @@ def sus_update(num_rolls, player_score, opponent_score, dice=six_sided):
     """
     # BEGIN PROBLEM 4
     "*** YOUR CODE HERE ***"
+    return sus_points(simple_update(num_rolls, player_score, opponent_score, dice))
     # END PROBLEM 4
 
 
@@ -299,3 +328,4 @@ def run(*args):
 
     if args.run_experiments:
         run_experiments()
+
