@@ -65,12 +65,9 @@ def take_turn(num_rolls, player_score, opponent_score, dice=six_sided):
     assert num_rolls <= 10, 'Cannot roll more than 10 dice.'
     # BEGIN PROBLEM 3
     "*** YOUR CODE HERE ***"
-    sum = 0
     if num_rolls == 0:
-        sum = boar_brawl(player_score, opponent_score)
-        return sum 
-    sum = roll_dice(num_rolls, dice)
-    return sum 
+        return boar_brawl(player_score, opponent_score) 
+    return roll_dice(num_rolls, dice)
     # END PROBLEM 3
 
 
@@ -159,6 +156,13 @@ def play(strategy0, strategy1, update,
     who = 0  # Who is about to take a turn, 0 (first) or 1 (second)
     # BEGIN PROBLEM 5
     "*** YOUR CODE HERE ***"
+    while score0 < goal and score1 < goal:
+        if who == 0:
+            score0 = update(strategy0(score0, score1), score0, score1, dice)
+            who = 1
+        else:
+            score1 = update(strategy1(score1, score0), score1, score0, dice)
+            who = 0
     # END PROBLEM 5
     return score0, score1
 
@@ -184,6 +188,7 @@ def always_roll(n):
     assert n >= 0 and n <= 10
     # BEGIN PROBLEM 6
     "*** YOUR CODE HERE ***"
+    return lambda x, y: n 
     # END PROBLEM 6
 
 
@@ -215,6 +220,13 @@ def is_always_roll(strategy, goal=GOAL):
     """
     # BEGIN PROBLEM 7
     "*** YOUR CODE HERE ***"
+    roll_same = True
+    for i in range(goal):
+        for j in range(goal):
+            if strategy(i, j) != strategy(0, 0):
+                roll_same = False
+                return roll_same
+    return roll_same
     # END PROBLEM 7
 
 
