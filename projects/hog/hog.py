@@ -341,6 +341,7 @@ def final_strategy(score, opponent_score):
     """
     # BEGIN PROBLEM 12
     # Remove this line once implemented.
+    # 看不懂题目什么意思
     # END PROBLEM 12
 
 
