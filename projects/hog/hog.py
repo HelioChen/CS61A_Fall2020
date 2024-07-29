@@ -243,6 +243,13 @@ def make_averaged(original_function, samples_count=1000):
     """
     # BEGIN PROBLEM 8
     "*** YOUR CODE HERE ***"
+    def average_dice(*args):
+        sum = 0
+        for i in range(samples_count):
+            sum += original_function(*args)
+        average = sum/samples_count
+        return average 
+    return average_dice
     # END PROBLEM 8
 
 
@@ -255,7 +262,15 @@ def max_scoring_num_rolls(dice=six_sided, samples_count=1000):
     1
     """
     # BEGIN PROBLEM 9
-    "*** YOUR CODE HERE ***"
+    "*** YOUR CODE HERE ***"   
+    max_id = 1
+    max_average = 0
+    for i in range(1, 11):
+        current_averge = make_averaged(roll_dice, samples_count)(i, dice)
+        if current_averge > max_average:
+            max_average = current_averge
+            max_id = i 
+    return max_id
     # END PROBLEM 9
 
 
@@ -300,7 +315,8 @@ def boar_strategy(score, opponent_score, threshold=11, num_rolls=6):
     points, and returns NUM_ROLLS otherwise. Ignore score and Sus Fuss.
     """
     # BEGIN PROBLEM 10
-    return num_rolls  # Remove this line once implemented.
+    # Remove this line once implemented.
+    
     # END PROBLEM 10
 
 
