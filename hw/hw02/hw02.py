@@ -23,12 +23,16 @@ def num_eights(x):
     True
     """
     "*** YOUR CODE HERE ***"
-    cnt = 0
-    while x != 0:
+    if x < 10:
+        if x == 8:
+            return 1
+        else:
+            return 0
+    else:
         if x % 10 == 8:
-            cnt += 1
-        x //= 10
-    return cnt 
+            return num_eights(x // 10) + 1
+        else:
+            return num_eights(x // 10)
 
 
 def pingpong(n):
@@ -64,6 +68,8 @@ def pingpong(n):
     True
     """
     "*** YOUR CODE HERE ***"
+    
+
 
 
 def missing_digits(n):
@@ -147,5 +153,3 @@ def make_anonymous_factorial():
     return 'YOUR_EXPRESSION_HERE'
 
 
-print(num_eights(88888888))
-print(num_eights(8))
