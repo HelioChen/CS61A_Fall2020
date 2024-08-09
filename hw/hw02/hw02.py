@@ -68,6 +68,13 @@ def pingpong(n):
     True
     """
     "*** YOUR CODE HERE ***"
+    index, value, dir = 1, 1, 1
+    while index < n:
+        value += dir
+        index += 1
+        if index % 8 == 0 or num_eights(index) != 0:
+            dir = -dir 
+    return value 
     
 
 
