@@ -68,14 +68,22 @@ def pingpong(n):
     True
     """
     "*** YOUR CODE HERE ***"
-    index, value, dir = 1, 1, 1
-    while index < n:
-        value += dir
-        index += 1
-        if index % 8 == 0 or num_eights(index) != 0:
-            dir = -dir 
-    return value 
-    
+    # index, value, dir = 1, 1, 1
+    # while index < n:
+    #     value += dir
+    #     index += 1
+    #     if index % 8 == 0 or num_eights(index) != 0:
+    #         dir = -dir 
+    # return value 
+    def pingpong_helper(index, value, dir):
+        if index == n:
+            return value 
+        else:
+            if (index + 1) % 8 == 0 or num_eights(index + 1) != 0:
+                return pingpong_helper(index + 1, value + dir, -dir)
+            else:
+                return pingpong_helper(index + 1, value + dir, dir)
+    return pingpong_helper(1, 1, 1)
 
 
 
@@ -107,6 +115,12 @@ def missing_digits(n):
     True
     """
     "*** YOUR CODE HERE ***"
+    all_but_last, last = n // 10, n % 10
+    if all_but_last == 0:
+        return 0
+    miss = 0 if last - all_but_last % 10 <= 1 else last - all_but_last % 10 - 1 
+    return missing_digits(all_but_last) + miss 
+
 
 
 def next_largest_coin(coin):
@@ -158,5 +172,7 @@ def make_anonymous_factorial():
     True
     """
     return 'YOUR_EXPRESSION_HERE'
+
+print(pingpong(10))
 
 
