@@ -25,7 +25,6 @@ def skip_add(n):
         return skip_add(n - 2) + n 
 
 
-
 def summation(n, term):
 
     """Return the sum of the first n terms in the sequence defined by term.
@@ -46,6 +45,10 @@ def summation(n, term):
     """
     assert n >= 1
     "*** YOUR CODE HERE ***"
+    if n == 1:
+        return term(n)
+    else:
+        return term(n) + summation(n - 1, term)
 
 
 def paths(m, n):
@@ -62,7 +65,10 @@ def paths(m, n):
     1
     """
     "*** YOUR CODE HERE ***"
-
+    if n == 1 or m == 1:
+        return 1
+    else:
+        return paths(m, n - 1) + paths(m - 1, n)
 
 
 def max_subseq(n, t):
