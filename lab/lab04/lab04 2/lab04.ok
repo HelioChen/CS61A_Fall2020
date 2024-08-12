@@ -1,6 +1,6 @@
 {
     "name": "Lab 4",
-    "endpoint": "cal/cs61a/su22/lab04",
+    "endpoint": "cal/cs61a/fa20/lab04",
     "src": [
         "lab04.py"
     ],
@@ -9,11 +9,11 @@
         "tests/*.py": "ok_test"
     },
     "default_tests": [
-        "list-mutation",
-        "no-wwpd-car",
-        "flatten",
-        "insert_items",
-        "Minty"
+        "list-indexing",
+        "skip_add",
+        "summation",
+        "paths",
+        "max_subseq"
     ],
     "protocols": [
         "restore",
