@@ -122,7 +122,6 @@ def missing_digits(n):
     return missing_digits(all_but_last) + miss 
 
 
-
 def next_largest_coin(coin):
     """Return the next coin. 
     >>> next_largest_coin(1)
@@ -157,12 +156,18 @@ def count_coins(total):
     True
     """
     "*** YOUR CODE HERE ***"
-    if total == 0:
-        return 0
-    elif total == 1 :
-        return 1
-        
-
+    def count(total, smallest_coin):
+        if total == 0:
+            return 1
+        elif total < 0:
+            return 0
+        elif not smallest_coin:
+            return 0
+        else:
+            with_smallest_coin = count(total - smallest_coin, smallest_coin)
+            without_smallest_coin = count(total, next_largest_coin(smallest_coin))
+            return with_smallest_coin + without_smallest_coin
+    return count(total, 1)
 
 
 from operator import sub, mul
@@ -177,8 +182,4 @@ def make_anonymous_factorial():
     >>> check(HW_SOURCE_FILE, 'make_anonymous_factorial', ['Assign', 'AugAssign', 'FunctionDef', 'Recursion'])
     True
     """
-    return 'YOUR_EXPRESSION_HERE'
-
-print(pingpong(10))
-
-
+    return None 
