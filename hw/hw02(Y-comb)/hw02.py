@@ -170,7 +170,7 @@ def count_coins(total):
     return count(total, 1)
 
 
-# 这个题目待会做 Y-combinator
+# 这个题目待会做
 from operator import sub, mul
 
 def make_anonymous_factorial():
