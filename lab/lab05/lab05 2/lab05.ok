@@ -1,6 +1,6 @@
 {
     "name": "Lab 5",
-    "endpoint": "cal/cs61a/sp23/lab05",
+    "endpoint": "cal/cs61a/fa20/lab05",
     "src": [
         "lab05.py"
     ],
@@ -9,15 +9,13 @@
         "tests/*.py": "ok_test"
     },
     "default_tests": [
-        "flatten",
-        "my_map",
-        "my_map_syntax_check",
-        "my_filter",
-        "my_filter_syntax_check",
-        "my_reduce",
+        "couple",
         "distance",
         "closer_city",
-        "check_city_abstraction"
+        "check_city_abstraction",
+        "berry_finder",
+        "sprout_leaves",
+        "check_abstraction"
     ],
     "protocols": [
         "restore",
