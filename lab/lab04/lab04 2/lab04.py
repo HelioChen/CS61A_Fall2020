@@ -116,6 +116,12 @@ def max_subseq(n, t):
     5
     """
     "*** YOUR CODE HERE ***"
+    if t == 0 or n == 0:
+        return 0
+    else:
+        with_last = max_subseq(n // 10, t - 1) * 10 + n % 10
+        without_last = max_subseq(n // 10, t)
+        return max(with_last, without_last)
 
 
 def add_chars(w1, w2):
@@ -145,4 +151,10 @@ def add_chars(w1, w2):
     True
     """
     "*** YOUR CODE HERE ***"
+    if not w1:
+        return w2
+    elif w1[0] == w2[0]:
+        return add_chars(w1[1:], w2[1:])
+    else:
+        return w2[0] + add_chars(w1, w2[1:])
 
