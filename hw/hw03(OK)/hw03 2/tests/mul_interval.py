@@ -1,17 +1,16 @@
 test = {
-  'name': 'sub_interval',
+  'name': 'mul_interval',
   'points': 1,
   'suites': [
     {
       'cases': [
         {
           'code': r"""
-          >>> str_interval(sub_interval(interval(-1, 2), interval(4, 8)))
-          4f23bb496f8a9132a3970ab764120343
-          # locked
+          >>> str_interval(mul_interval(interval(-1, 2), interval(4, 8)))
+          '-8 to 16'
           """,
           'hidden': False,
-          'locked': True
+          'locked': False
         }
       ],
       'scored': True,
@@ -28,8 +27,8 @@ test = {
           'code': r"""
           >>> # Testing for abstraction violations
           >>> # Your code should not check for which implementation is used
-          >>> str_interval(sub_interval(interval(-1, 2), interval(4, 8)))
-          '-9 to -2'
+          >>> str_interval(mul_interval(interval(-1, 2), interval(4, 8)))
+          '-8 to 16'
           """,
           'hidden': False,
           'locked': False

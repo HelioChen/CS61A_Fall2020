@@ -1,20 +1,19 @@
 test = {
-  'name': 'interval',
+  'name': 'div_interval',
   'points': 1,
   'suites': [
     {
       'cases': [
         {
           'code': r"""
-          >>> str_interval(interval(-1, 2))
-          f1fc55b46741bef39140aa66ce56bc5d
-          # locked
-          >>> str_interval(add_interval(interval(-1, 2), interval(4, 8)))
-          149b7ca923be4cbd8b8beed904ace477
-          # locked
+          >>> # Type AssertionError if you think an AssertionError is raised
+          >>> str_interval(div_interval(interval(-1, 2), interval(4, 8)))
+          '-0.25 to 0.5'
+          >>> str_interval(div_interval(interval(4, 8), interval(-1, 2)))
+          AssertionError
           """,
           'hidden': False,
-          'locked': True
+          'locked': False
         }
       ],
       'scored': True,
@@ -31,10 +30,10 @@ test = {
           'code': r"""
           >>> # Testing for abstraction violations
           >>> # Your code should not check for which implementation is used
-          >>> str_interval(interval(-1, 2))
-          '-1 to 2'
-          >>> str_interval(add_interval(interval(-1, 2), interval(4, 8)))
-          '3 to 10'
+          >>> str_interval(div_interval(interval(-1, 2), interval(4, 8)))
+          '-0.25 to 0.5'
+          >>> str_interval(div_interval(interval(4, 8), interval(-1, 2)))
+          AssertionError
           """,
           'hidden': False,
           'locked': False
