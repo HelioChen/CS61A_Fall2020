@@ -162,7 +162,21 @@ def berry_finder(t):
     True
     """
     "*** YOUR CODE HERE ***"
-    
+    if label(t) == 'berry':  # 检查当前节点是否是 'berry'
+        return True
+    for branch in branches(t):  # 遍历每个分支（子节点）
+        if berry_finder(branch):  # 递归检查每个分支
+            return True
+    return False  # 如果找不到 'berry' 返回 False
+
+    # 这个也可以
+    # for c in t:
+    #     if c == 'berry':
+    #         return True 
+    #     elif type(c) == list:
+    #         if berry_finder(c):
+    #             return True 
+    # return False
 
 
 def sprout_leaves(t, leaves):
@@ -199,6 +213,11 @@ def sprout_leaves(t, leaves):
           2
     """
     "*** YOUR CODE HERE ***"
+    if is_leaf(t):
+        return tree(label(t), [tree(leaf) for leaf in leaves])
+    else:
+        return tree(label(t), [sprout_leaves(b, leaves) for b in branches(t)])
+
 
 # Abstraction tests for sprout_leaves and berry_finder
 def check_abstraction():
@@ -257,7 +276,11 @@ def coords(fn, seq, lower, upper):
     [[-2, 4], [1, 1], [3, 9]]
     """
     "*** YOUR CODE HERE ***"
-    return ______
+    a = []
+    for c in seq:
+        if fn(c) >= lower and fn(c) <= upper:
+            a.append([c, fn(c)])
+    return a 
 
 
 def riffle(deck):
@@ -270,7 +293,11 @@ def riffle(deck):
     [0, 10, 1, 11, 2, 12, 3, 13, 4, 14, 5, 15, 6, 16, 7, 17, 8, 18, 9, 19]
     """
     "*** YOUR CODE HERE ***"
-    return _______
+    a = []
+    for i,j in zip(range(0, len(deck)//2), range(len(deck)//2, len(deck))):
+        a.append(deck[i])
+        a.append(deck[j])
+    return a 
 
 
 def add_trees(t1, t2):
@@ -309,6 +336,17 @@ def add_trees(t1, t2):
       5
     """
     "*** YOUR CODE HERE ***"
+    if t1 is None:
+        return t2
+    if t2 is None:
+        return t1
+    new_label = label(t1) + label(t2)
+    t1_branches = branches(t1)
+    t2_branches = branches(t2)
+    length = max(len(t1_branches), len(t2_branches))
+    new_branches = [add_trees(t1_branches[i] if i < len(t1_branches) else None, 
+                              t2_branches[i] if i < len(t2_branches) else None) for i in range(length)]
+    return tree(new_label, new_branches)
 
 
 def build_successors_table(tokens):
